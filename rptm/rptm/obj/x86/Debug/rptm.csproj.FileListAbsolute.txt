@@ -6,3 +6,4 @@ C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.csproj.Generate
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.exe
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.pdb
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\bin\Debug\MySql.Data.dll
+C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.csprojResolveAssemblyReference.cache

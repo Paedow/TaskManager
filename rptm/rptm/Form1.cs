@@ -38,7 +38,7 @@ namespace rptm
                     userName = textBox3.Text;
                     button2.Enabled = false;
                     ms.SendMessage("system", userName+" hat sich angemeldet.");
-                    textBox1.Text = ms.LoadMessages();
+                    RefreshChatWindow();
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace rptm
                 {
                     ms.SendMessage(userName, textBox2.Text);
                     textBox2.Text = "";
-                    textBox1.Text = ms.LoadMessages();
+                    RefreshChatWindow();
                 }
             }
         }
@@ -62,13 +62,13 @@ namespace rptm
             {
                 ms.SendMessage(userName, textBox2.Text);
                 textBox2.Text = "";
-                textBox1.Text = ms.LoadMessages();
+                RefreshChatWindow();
             }
         }
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
-            textBox1.Text = ms.LoadMessages();
+            RefreshChatWindow();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -82,13 +82,22 @@ namespace rptm
                 userName = textBox3.Text;
                 button2.Enabled = false;
                 ms.SendMessage("system", userName + " hat sich angemeldet.");
-                textBox1.Text = ms.LoadMessages();
+                RefreshChatWindow();
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(!String.IsNullOrEmpty(userName)) ms.SendMessage("system", userName + " hat sich abgemeldet.");
+        }
+
+        private void RefreshChatWindow()
+        {
+            string oldText = textBox1.Text;
+            textBox1.Text = ms.LoadMessages();
+            if (textBox1.Text == oldText) return;
+            textBox1.SelectionStart = textBox1.Text.Length;
+            textBox1.ScrollToCaret();
         }
     }
 }
