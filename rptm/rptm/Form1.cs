@@ -39,7 +39,7 @@ namespace rptm
                     textBox3.Enabled = false;
                     userName = textBox3.Text;
                     button2.Enabled = false;
-                    ms.SendMessage("system", userName + " hat sich angemeldet.");
+                    ms.SendMessage(userName + " hat sich angemeldet.", "system");
                     RefreshChatWindow();
                 }
             }
@@ -75,14 +75,14 @@ namespace rptm
                 textBox3.Enabled = false;
                 userName = textBox3.Text;
                 button2.Enabled = false;
-                ms.SendMessage("system", userName + " hat sich angemeldet.");
+                ms.SendMessage(userName + " hat sich angemeldet.", "system");
                 RefreshChatWindow();
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!String.IsNullOrEmpty(userName)) ms.SendMessage("system", userName + " hat sich abgemeldet.");
+            if (!String.IsNullOrEmpty(userName)) ms.SendMessage(userName + " hat sich abgemeldet.", "system");
         }
 
         private void RefreshChatWindow()
@@ -100,21 +100,21 @@ namespace rptm
             {
                 if (textBox2.Text[0] != '/')
                 {
-                    ms.SendMessage(userName, textBox2.Text);
+                    ms.SendMessage(textBox2.Text, userName);
                     textBox2.Text = "";
                     RefreshChatWindow();
                 }
                 else
                 {
                     string cmd = textBox2.Text.Substring(1);
-                    if (!String.IsNullOrEmpty(userName)) ms.SendMessage("system", userName + " hat den Befehl \"" + cmd + "\" ausgeführt.");
+                    if (!String.IsNullOrEmpty(userName)) ms.SendMessage(userName + " hat den Befehl \"" + cmd + "\" ausgeführt.", "system");
                     if (cmd == "time")
                     {
-                            ms.SendMessage("command", userName + "\\'s Aktuelle Systemzeit: " + DateTime.Now.ToLongTimeString());
+                        ms.SendMessage(userName + "\\'s Aktuelle Systemzeit: " + DateTime.Now.ToLongTimeString(), "command");
                     }
                     if (cmd == "version")
                     {
-                        ms.SendMessage("command", userName + "\\'s Aktuelle Clientversion: " + Application.ProductVersion);
+                        ms.SendMessage(userName + "\\'s Aktuelle Clientversion: " + Application.ProductVersion, "command");
                     }
                     textBox2.Text = "";
                 }
