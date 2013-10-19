@@ -56,7 +56,7 @@
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(451, 512);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Test\r\nHallo\r\nOutput please!";
+            this.textBox1.Text = "Lade Chatverlauf...";
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             // 
             // textBox2

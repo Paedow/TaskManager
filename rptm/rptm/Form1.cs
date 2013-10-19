@@ -29,6 +29,8 @@ namespace rptm
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
                 if (textBox3.Text.Length >= 3)
                 {
                     textBox1.Enabled = true;
@@ -37,7 +39,7 @@ namespace rptm
                     textBox3.Enabled = false;
                     userName = textBox3.Text;
                     button2.Enabled = false;
-                    ms.SendMessage("system", userName+" hat sich angemeldet.");
+                    ms.SendMessage("system", userName + " hat sich angemeldet.");
                     RefreshChatWindow();
                 }
             }
@@ -47,23 +49,15 @@ namespace rptm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (textBox2.Text.Length >= 1)
-                {
-                    ms.SendMessage(userName, textBox2.Text);
-                    textBox2.Text = "";
-                    RefreshChatWindow();
-                }
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                HandleInput();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text.Length >= 1)
-            {
-                ms.SendMessage(userName, textBox2.Text);
-                textBox2.Text = "";
-                RefreshChatWindow();
-            }
+            
         }
 
         private void refreshTimer_Tick(object sender, EventArgs e)
@@ -88,7 +82,7 @@ namespace rptm
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(!String.IsNullOrEmpty(userName)) ms.SendMessage("system", userName + " hat sich abgemeldet.");
+            if (!String.IsNullOrEmpty(userName)) ms.SendMessage("system", userName + " hat sich abgemeldet.");
         }
 
         private void RefreshChatWindow()
@@ -98,6 +92,33 @@ namespace rptm
             if (textBox1.Text == oldText) return;
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.ScrollToCaret();
+        }
+
+        private void HandleInput()
+        {
+            if (textBox2.Text.Length >= 1)
+            {
+                if (textBox2.Text[0] != '/')
+                {
+                    ms.SendMessage(userName, textBox2.Text);
+                    textBox2.Text = "";
+                    RefreshChatWindow();
+                }
+                else
+                {
+                    string cmd = textBox2.Text.Substring(1);
+                    if (!String.IsNullOrEmpty(userName)) ms.SendMessage("system", userName + " hat den Befehl \"" + cmd + "\" ausgeführt.");
+                    if (cmd == "time")
+                    {
+                            ms.SendMessage("command", userName + "\\'s Aktuelle Systemzeit: " + DateTime.Now.ToLongTimeString());
+                    }
+                    if (cmd == "version")
+                    {
+                        ms.SendMessage("command", userName + "\\'s Aktuelle Clientversion: " + Application.ProductVersion);
+                    }
+                    textBox2.Text = "";
+                }
+            }
         }
     }
 }
