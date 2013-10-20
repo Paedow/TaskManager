@@ -1,0 +1,7 @@
+C:\Users\Paedow\Desktop\TaskManager\rptm\Updater\bin\Debug\Updater.exe
+C:\Users\Paedow\Desktop\TaskManager\rptm\Updater\bin\Debug\Updater.pdb
+C:\Users\Paedow\Desktop\TaskManager\rptm\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+C:\Users\Paedow\Desktop\TaskManager\rptm\Updater\obj\x86\Debug\Updater.csproj.GenerateResource.Cache
+C:\Users\Paedow\Desktop\TaskManager\rptm\Updater\obj\x86\Debug\Updater.exe
+C:\Users\Paedow\Desktop\TaskManager\rptm\Updater\obj\x86\Debug\Updater.pdb
+C:\Users\Paedow\Desktop\TaskManager\rptm\Updater\bin\Debug\currentVersion.xml

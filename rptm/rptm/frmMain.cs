@@ -5,6 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Web;
+using System.Net;
+using System.Xml;
+using System.Diagnostics;
 
 namespace rptm
 {
@@ -17,7 +21,7 @@ namespace rptm
             InitializeComponent();
             string test = txtChatlog.Text;
             refreshTimer.Start();
-            Text = Application.ProductVersion;
+            Text = "RübenPartyTaskManager "+Application.ProductVersion;
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
@@ -45,8 +49,9 @@ namespace rptm
                 txtUsername.Enabled = false;
                 userName = txtUsername.Text;
                 cmdLogin.Enabled = false;
-                ms.SendMessage("["+userName + " hat sich angemeldet.]", "system");
+                ms.SendMessage("[ " + userName + " hat sich angemeldet. ]", "system");
                 RefreshChatWindow();
+                txtMessage.Focus();
             }
         }
 
@@ -97,18 +102,54 @@ namespace rptm
                 else
                 {
                     string cmd = txtMessage.Text.Substring(1);
-                    if (!String.IsNullOrEmpty(userName)) ms.SendMessage(userName + " hat den Befehl \"" + cmd + "\" ausgeführt.", "system");
                     if (cmd == "time")
                     {
-                        ms.SendMessage(userName + "\\'s Aktuelle Systemzeit: " + DateTime.Now.ToLongTimeString(), "command");
+                        if (!String.IsNullOrEmpty(userName)) ms.SendMessage("[ " + userName + " hat den Befehl \"" + cmd + "\" ausgeführt. ]", "system");
+                        ms.SendMessage("*" + userName + "'s Aktuelle Systemzeit: " + DateTime.Now.ToLongTimeString(), "command");
                     }
                     if (cmd == "version")
                     {
-                        ms.SendMessage(userName + "\\'s Aktuelle Clientversion: " + Application.ProductVersion, "command");
+                        if (!String.IsNullOrEmpty(userName)) ms.SendMessage("[ " + userName + " hat den Befehl \"" + cmd + "\" ausgeführt. ]", "system");
+                        ms.SendMessage("*" + userName + "'s Aktuelle Clientversion: " + Application.ProductVersion, "command");
+                    }
+                    if (cmd == "update")
+                    {
+                        if (!String.IsNullOrEmpty(userName)) ms.SendMessage("[ " + userName + " hat den Befehl \"" + cmd + "\" ausgeführt. ]", "system");
+                        CheckUpdates();
                     }
                     txtMessage.Text = "";
                 }
             }
+        }
+
+        private void CheckUpdates()
+        {
+            WebClient wc = new WebClient();
+            XmlDocument doc = new XmlDocument();
+            string xmlString = wc.DownloadString("http://www.nightking.org/rptm.api/currentVersion.xml");
+            doc.LoadXml(xmlString.Substring(3));
+            string currVer = "";
+            foreach (XmlNode xn in doc.LastChild)
+            {
+                if (xn.Name == "version")
+                {
+                    currVer = xn.InnerText.Trim();
+                }
+            }
+            if (Int32.Parse(currVer.Split('.')[3]) > Int32.Parse(Application.ProductVersion.Split('.')[3]))
+            {
+                if(DialogResult.Yes == MessageBox.Show("Wollen Sie auf die aktuellste Version "+currVer+" updaten?", "Update verfügbar", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    wc.DownloadFileAsync(new Uri("http://www.nightking.org/rptm.api/Updater.exe"), Application.StartupPath+"\\Updater.exe");
+                    wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadFileCompleted);
+                }
+            }
+        }
+
+        void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            Process.Start(Application.StartupPath + "\\Updater.exe");
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
