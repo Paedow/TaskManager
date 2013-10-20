@@ -29,8 +29,7 @@ namespace rptm
                 }
                 catch (WebException ex)
                 {
-                    offline = true;
-                    MessageBox.Show("Die Verbindung zum Internet konnte nicht hergestellt werden!", "Verbindungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.ToString(), "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -55,8 +54,7 @@ namespace rptm
                 }
                 catch (WebException ex)
                 {
-                    offline = true;
-                    MessageBox.Show("Die Verbindung zum Internet konnte nicht hergestellt werden!", "Verbindungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.ToString(), "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return ex.ToString();
                 }
             }

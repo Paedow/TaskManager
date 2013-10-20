@@ -8,21 +8,21 @@ using System.Windows.Forms;
 
 namespace rptm
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         MessageServer ms = new MessageServer("http://www.nightking.org/rptm.api/");
         private string userName = "";
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
-            string test = textBox1.Text;
+            string test = txtChatlog.Text;
             refreshTimer.Start();
             Text = Application.ProductVersion;
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            textBox2.Focus();
+            txtMessage.Focus();
         }
 
         private void textBox3_KeyDown(object sender, KeyEventArgs e)
@@ -31,14 +31,14 @@ namespace rptm
             {
                 e.Handled = true;
                 e.SuppressKeyPress = true;
-                if (textBox3.Text.Length >= 3)
+                if (txtUsername.Text.Length >= 3)
                 {
-                    textBox1.Enabled = true;
-                    textBox2.Enabled = true;
-                    button1.Enabled = true;
-                    textBox3.Enabled = false;
-                    userName = textBox3.Text;
-                    button2.Enabled = false;
+                    txtChatlog.Enabled = true;
+                    txtMessage.Enabled = true;
+                    cmdSend.Enabled = true;
+                    txtUsername.Enabled = false;
+                    userName = txtUsername.Text;
+                    cmdLogin.Enabled = false;
                     ms.SendMessage(userName + " hat sich angemeldet.", "system");
                     RefreshChatWindow();
                 }
@@ -55,11 +55,6 @@ namespace rptm
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
             RefreshChatWindow();
@@ -67,46 +62,46 @@ namespace rptm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox3.Text.Length >= 3)
+            if (txtUsername.Text.Length >= 3)
             {
-                textBox1.Enabled = true;
-                textBox2.Enabled = true;
-                button1.Enabled = true;
-                textBox3.Enabled = false;
-                userName = textBox3.Text;
-                button2.Enabled = false;
-                ms.SendMessage(userName + " hat sich angemeldet.", "system");
+                txtChatlog.Enabled = true;
+                txtMessage.Enabled = true;
+                cmdSend.Enabled = true;
+                txtUsername.Enabled = false;
+                userName = txtUsername.Text;
+                cmdLogin.Enabled = false;
+                ms.SendMessage(string.Format("[ {0} hat sich angemeldet. ]", userName), "system");
                 RefreshChatWindow();
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!String.IsNullOrEmpty(userName)) ms.SendMessage(userName + " hat sich abgemeldet.", "system");
+            if (!String.IsNullOrEmpty(userName)) ms.SendMessage(string.Format("[ {0} hat sich abgemeldet. ]", userName), "system");
         }
 
         private void RefreshChatWindow()
         {
-            string oldText = textBox1.Text;
-            textBox1.Text = ms.LoadMessages();
-            if (textBox1.Text == oldText) return;
-            textBox1.SelectionStart = textBox1.Text.Length;
-            textBox1.ScrollToCaret();
+            string oldText = txtChatlog.Text;
+            txtChatlog.Text = ms.LoadMessages();
+            if (txtChatlog.Text == oldText) return;
+            txtChatlog.SelectionStart = txtChatlog.Text.Length;
+            txtChatlog.ScrollToCaret();
         }
 
         private void HandleInput()
         {
-            if (textBox2.Text.Length >= 1)
+            if (txtMessage.Text.Length >= 1)
             {
-                if (textBox2.Text[0] != '/')
+                if (txtMessage.Text[0] != '/')
                 {
-                    ms.SendMessage(textBox2.Text, userName);
-                    textBox2.Text = "";
+                    ms.SendMessage(txtMessage.Text, userName);
+                    txtMessage.Text = "";
                     RefreshChatWindow();
                 }
                 else
                 {
-                    string cmd = textBox2.Text.Substring(1);
+                    string cmd = txtMessage.Text.Substring(1);
                     if (!String.IsNullOrEmpty(userName)) ms.SendMessage(userName + " hat den Befehl \"" + cmd + "\" ausgeführt.", "system");
                     if (cmd == "time")
                     {
@@ -116,9 +111,15 @@ namespace rptm
                     {
                         ms.SendMessage(userName + "\\'s Aktuelle Clientversion: " + Application.ProductVersion, "command");
                     }
-                    textBox2.Text = "";
+                    txtMessage.Text = "";
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ms.SendMessage(txtMessage.Text, txtUsername.Text);
+            txtMessage.Text = "";
         }
     }
 }

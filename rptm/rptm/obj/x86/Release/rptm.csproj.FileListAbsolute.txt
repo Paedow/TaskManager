@@ -1,0 +1,8 @@
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\bin\Release\rptm.exe.config
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\bin\Release\rptm.exe
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\bin\Release\rptm.pdb
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Release\rptm.frmMain.resources
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Release\rptm.Properties.Resources.resources
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Release\rptm.csproj.GenerateResource.Cache
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Release\rptm.exe
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Release\rptm.pdb
