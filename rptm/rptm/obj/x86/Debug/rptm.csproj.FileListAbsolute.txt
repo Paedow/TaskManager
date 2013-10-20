@@ -7,3 +7,11 @@ C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.exe
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.pdb
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\bin\Debug\MySql.Data.dll
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.csprojResolveAssemblyReference.cache
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\bin\Debug\rptm.exe.config
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\bin\Debug\rptm.exe
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\bin\Debug\rptm.pdb
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.frmMain.resources
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.Properties.Resources.resources
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.csproj.GenerateResource.Cache
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.exe
+C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.pdb
