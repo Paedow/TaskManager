@@ -1,6 +1,5 @@
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\bin\Debug\rptm.exe
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\bin\Debug\rptm.pdb
-C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.Form1.resources
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.Properties.Resources.resources
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.csproj.GenerateResource.Cache
 C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.exe
@@ -15,3 +14,5 @@ C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\ob
 C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.csproj.GenerateResource.Cache
 C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.exe
 C:\Users\JONATHAN\Documents\Visual Studio 2010\Projects\TaskManager\rptm\rptm\obj\x86\Debug\rptm.pdb
+C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\bin\Debug\rptm.exe.config
+C:\Users\Paedow\Desktop\TaskManager\rptm\rptm\obj\x86\Debug\rptm.frmMain.resources

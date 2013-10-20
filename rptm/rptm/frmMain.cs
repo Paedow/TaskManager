@@ -31,17 +31,22 @@ namespace rptm
             {
                 e.Handled = true;
                 e.SuppressKeyPress = true;
-                if (txtUsername.Text.Length >= 3)
-                {
-                    txtChatlog.Enabled = true;
-                    txtMessage.Enabled = true;
-                    cmdSend.Enabled = true;
-                    txtUsername.Enabled = false;
-                    userName = txtUsername.Text;
-                    cmdLogin.Enabled = false;
-                    ms.SendMessage(userName + " hat sich angemeldet.", "system");
-                    RefreshChatWindow();
-                }
+                Login();
+            }
+        }
+
+        private void Login()
+        {
+            if (txtUsername.Text.Length >= 3)
+            {
+                txtChatlog.Enabled = true;
+                txtMessage.Enabled = true;
+                cmdSend.Enabled = true;
+                txtUsername.Enabled = false;
+                userName = txtUsername.Text;
+                cmdLogin.Enabled = false;
+                ms.SendMessage("["+userName + " hat sich angemeldet.]", "system");
+                RefreshChatWindow();
             }
         }
 
@@ -62,17 +67,7 @@ namespace rptm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text.Length >= 3)
-            {
-                txtChatlog.Enabled = true;
-                txtMessage.Enabled = true;
-                cmdSend.Enabled = true;
-                txtUsername.Enabled = false;
-                userName = txtUsername.Text;
-                cmdLogin.Enabled = false;
-                ms.SendMessage(string.Format("[ {0} hat sich angemeldet. ]", userName), "system");
-                RefreshChatWindow();
-            }
+            Login();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

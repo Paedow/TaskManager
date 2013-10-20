@@ -8,7 +8,9 @@ namespace rptm
     {
         static public string To64(this string toEncode)
         {
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(toEncode));
+            byte[] tmp = Encoding.UTF8.GetBytes(toEncode);
+            string tmp2 = Convert.ToBase64String(tmp);
+            return tmp2;
         }
 
         static public string From64(this string encodedData)
